@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion des cookies — Cabinet Dentaire d'Artix</title>
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .legal-hero { background: var(--navy-deep); color: var(--white); padding: 160px 0 60px; }
+  .legal-hero h1 { color: var(--white); }
+  .legal-body { max-width: 720px; }
+  .legal-body p { color: var(--ink-soft); font-size: 0.96rem; margin-bottom: 20px; }
+  .back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px; font-weight: 600; color: var(--navy); }
+  .saved-confirm { display:none; background:var(--beige); color:var(--navy); border-radius: var(--radius-sm); padding:14px 18px; margin-top:18px; font-size:0.88rem; font-weight:600; }
+  .saved-confirm.show { display:block; }
+</style>
+</head>
+<body>
+
+<header class="site-header scrolled" id="siteHeader">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5c-2.5 0-4.3 1.7-4.3 4 0 1.6.4 2.4.4 4 0 2.3-.8 3.1-.8 5 0 1.1.7 1.9 1.5 1.9 1.1 0 1.1-2.3 2.6-2.3s1.5 2.3 2.6 2.3c.8 0 1.5-.8 1.5-1.9 0-1.9-.8-2.7-.8-5 0-1.6.4-2.4.4-4 0-2.3-1.8-4-4.3-4z" fill="currentColor"/></svg></span>
+      <span class="logo-text"><strong>Cabinet d'Artix</strong><span>Chirurgiens-dentistes</span></span>
+    </a>
+    <div class="header-actions">
+      <a href="contact.html" class="btn btn-primary">Prendre rendez-vous</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="legal-hero">
+  <div class="container">
+    <h1>Gestion des cookies</h1>
+  </div>
+</section>
+
+<section class="section-pad" style="padding-top:60px;">
+  <div class="container">
+    <a href="index.html" class="back-link">← Retour au site</a>
+
+    <div class="legal-body">
+      <p>Ce site utilise des cookies strictement nécessaires à son fonctionnement, ainsi que des cookies de mesure d'audience soumis à votre consentement. Vous pouvez ajuster vos préférences ci-dessous à tout moment.</p>
+
+      <div class="cookie-pref-card">
+        <div>
+          <h4>Cookies nécessaires</h4>
+          <p>Indispensables au fonctionnement du site (navigation, sécurité). Ils ne peuvent pas être désactivés.</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked disabled>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="cookie-pref-card">
+        <div>
+          <h4>Mesure d'audience</h4>
+          <p>Nous aident à comprendre l'utilisation du site pour l'améliorer. Aucune donnée n'est utilisée à des fins publicitaires.</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="analyticsToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <button class="btn btn-dark" id="saveCookiePrefs" style="margin-top:8px;">Enregistrer mes préférences</button>
+      <div class="saved-confirm" id="cookiePrefsSaved">Vos préférences ont bien été enregistrées.</div>
+
+      <p style="margin-top:40px;">Pour en savoir plus sur les données collectées et vos droits, consultez notre <a href="politique-confidentialite.html" style="color:var(--navy); font-weight:600;">politique de confidentialité</a>.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer" style="padding-top:40px;">
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;">
+      <span>© 2026 Cabinet Dentaire d'Artix. Tous droits réservés.</span>
+      <div class="footer-legal">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="politique-confidentialite.html">Politique de confidentialité</a>
+        <a href="index.html">Retour au site</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
