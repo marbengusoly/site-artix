@@ -231,6 +231,8 @@ document.addEventListener('DOMContentLoaded', function () {
       Array.prototype.forEach.call(rdvSoin.options, function (opt) {
         if (opt.text === label) rdvSoin.value = opt.value;
       });
+      var siteModeBtn = document.querySelector('.rdv-mode-btn[data-rdvmode="site"]');
+      if (siteModeBtn) siteModeBtn.click();
     }
   }
 
