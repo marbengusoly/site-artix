@@ -224,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
       implant: 'Bilan implantaire',
       esthetique: 'Esthétique du sourire',
       parodontologie: 'Parodontologie',
+      pedodontie: 'Pédodontie',
       urgence: 'Urgence dentaire'
     };
     var label = motifLabels[motif];
