@@ -964,56 +964,125 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 
 /* ==========================================================================
    Animation pédagogique — pourquoi remplacer une dent manquante
+   (séquence en 5 étapes façon "scrubber vidéo" : aujourd'hui → 6 mois →
+   1 an → plusieurs années → avec un implant)
    ========================================================================== */
 .tooth-loss-diagram {
   background: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  padding: 44px 40px 36px;
-  max-width: 860px;
+  padding: 48px 48px 40px;
+  max-width: 820px;
   margin: 0 auto;
 }
-.tooth-loss-diagram svg { width: 100%; height: auto; display: block; margin: 0 auto 8px; }
-.tld-panel-title { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ink-soft); }
-.tld-panel-title.tld-strong { fill: var(--navy); }
-.tld-time-badge { font-family: var(--font-body); font-style: italic; font-size: 11px; fill: #6b7a5f; opacity: 0; animation: tldTimeBadge 9s ease-in-out infinite; }
 
-.tld-neighbor-left { transform-box: fill-box; transform-origin: bottom center; animation: tldTiltLeft 9s ease-in-out infinite; }
-.tld-neighbor-right { transform-box: fill-box; transform-origin: bottom center; animation: tldTiltRight 9s ease-in-out infinite; }
-.tld-opposing { transform-box: fill-box; transform-origin: top center; animation: tldExtrude 9s ease-in-out infinite; }
-.tld-bone { transform-box: fill-box; transform-origin: bottom center; animation: tldBoneLoss 9s ease-in-out infinite; }
+/* ---------- Frise temporelle (scrubber) ---------- */
+.tld-track { position: relative; height: 4px; background: var(--line); border-radius: 100px; overflow: hidden; }
+.tld-fill {
+  position: absolute; inset: 0 auto 0 0; width: 2%;
+  background: linear-gradient(90deg, var(--gold), #6f8a68);
+  border-radius: 100px;
+  animation: tldProgress 18s ease-in-out infinite;
+}
+.tld-ticks { display: flex; justify-content: space-between; gap: 6px; margin-top: 12px; }
+.tld-ticks span { flex: 1; font-size: 0.72rem; font-weight: 600; color: var(--ink-soft); opacity: 0.55; }
+.tld-ticks span:first-child { text-align: left; }
+.tld-ticks span:last-child { text-align: right; }
+.tld-ticks span:not(:first-child):not(:last-child) { text-align: center; }
+.tld-ticks span:nth-child(1) { animation: tldTick1 18s ease-in-out infinite; }
+.tld-ticks span:nth-child(2) { animation: tldTick2 18s ease-in-out infinite; }
+.tld-ticks span:nth-child(3) { animation: tldTick3 18s ease-in-out infinite; }
+.tld-ticks span:nth-child(4) { animation: tldTick4 18s ease-in-out infinite; }
+.tld-ticks span:nth-child(5) { animation: tldTick5 18s ease-in-out infinite; }
 
-@keyframes tldTiltLeft {
-  0%, 15%   { transform: rotate(0deg); }
-  45%, 80%  { transform: rotate(9deg); }
-  100%      { transform: rotate(0deg); }
+@keyframes tldProgress {
+  0%, 12%   { width: 2%; }
+  17%, 29%  { width: 25%; }
+  34%, 46%  { width: 50%; }
+  51%, 63%  { width: 75%; }
+  70%, 92%  { width: 100%; }
+  100%      { width: 2%; }
 }
-@keyframes tldTiltRight {
-  0%, 15%   { transform: rotate(0deg); }
-  45%, 80%  { transform: rotate(-9deg); }
-  100%      { transform: rotate(0deg); }
+@keyframes tldTick1 {
+  0%, 12%   { opacity: 1; color: var(--navy); }
+  17%, 100% { opacity: 0.55; color: var(--ink-soft); }
 }
-@keyframes tldExtrude {
-  0%, 15%   { transform: translateY(0); }
-  45%, 80%  { transform: translateY(13px); }
-  100%      { transform: translateY(0); }
+@keyframes tldTick2 {
+  0%, 12%   { opacity: 0.55; color: var(--ink-soft); }
+  17%, 29%  { opacity: 1; color: var(--navy); }
+  34%, 100% { opacity: 0.55; color: var(--ink-soft); }
 }
-@keyframes tldBoneLoss {
-  0%, 15%   { transform: scaleY(1); }
-  45%, 80%  { transform: scaleY(0.5); }
-  100%      { transform: scaleY(1); }
+@keyframes tldTick3 {
+  0%, 29%   { opacity: 0.55; color: var(--ink-soft); }
+  34%, 46%  { opacity: 1; color: var(--navy); }
+  51%, 100% { opacity: 0.55; color: var(--ink-soft); }
 }
-@keyframes tldTimeBadge {
-  0%, 15%   { opacity: 0; }
-  35%, 85%  { opacity: 1; }
+@keyframes tldTick4 {
+  0%, 46%   { opacity: 0.55; color: var(--ink-soft); }
+  51%, 63%  { opacity: 1; color: var(--navy); }
+  70%, 100% { opacity: 0.55; color: var(--ink-soft); }
+}
+@keyframes tldTick5 {
+  0%, 63%   { opacity: 0.55; color: var(--ink-soft); }
+  70%, 92%  { opacity: 1; color: var(--gold); }
+  97%, 100% { opacity: 0.55; color: var(--ink-soft); }
+}
+
+/* ---------- Illustration ---------- */
+.tooth-loss-diagram svg { width: 100%; max-width: 600px; height: auto; display: block; margin: 30px auto 6px; }
+
+.tld2-neighbor-left  { transform-box: fill-box; transform-origin: bottom center; animation: tld2TiltLeft 18s ease-in-out infinite; }
+.tld2-neighbor-right { transform-box: fill-box; transform-origin: bottom center; animation: tld2TiltRight 18s ease-in-out infinite; }
+.tld2-opposing        { transform-box: fill-box; transform-origin: top center; animation: tld2Extrude 18s ease-in-out infinite; }
+.tld2-bone            { transform-box: fill-box; transform-origin: bottom center; animation: tld2Bone 18s ease-in-out infinite; }
+.tld2-socket          { animation: tld2SocketFade 18s ease-in-out infinite; }
+.tld2-implant         { animation: tld2ImplantFade 18s ease-in-out infinite; }
+.tld2-implant-glow    { transform-box: fill-box; transform-origin: center; animation: tld2Glow 3.2s ease-in-out infinite alternate; }
+
+@keyframes tld2TiltLeft {
+  0%, 12%   { transform: rotate(0deg); }
+  17%, 29%  { transform: rotate(3deg); }
+  34%, 46%  { transform: rotate(6deg); }
+  51%, 63%  { transform: rotate(10deg); }
+  70%, 100% { transform: rotate(0deg); }
+}
+@keyframes tld2TiltRight {
+  0%, 12%   { transform: rotate(0deg); }
+  17%, 29%  { transform: rotate(-3deg); }
+  34%, 46%  { transform: rotate(-6deg); }
+  51%, 63%  { transform: rotate(-10deg); }
+  70%, 100% { transform: rotate(0deg); }
+}
+@keyframes tld2Extrude {
+  0%, 12%   { transform: translateY(0); }
+  17%, 29%  { transform: translateY(4px); }
+  34%, 46%  { transform: translateY(8px); }
+  51%, 63%  { transform: translateY(14px); }
+  70%, 100% { transform: translateY(0); }
+}
+@keyframes tld2Bone {
+  0%, 12%   { transform: scaleY(1); }
+  17%, 29%  { transform: scaleY(0.85); }
+  34%, 46%  { transform: scaleY(0.65); }
+  51%, 63%  { transform: scaleY(0.4); }
+  70%, 100% { transform: scaleY(1); }
+}
+@keyframes tld2SocketFade {
+  0%, 63%   { opacity: 1; }
+  70%, 92%  { opacity: 0; }
+  100%      { opacity: 1; }
+}
+@keyframes tld2ImplantFade {
+  0%, 63%   { opacity: 0; }
+  70%, 92%  { opacity: 1; }
   100%      { opacity: 0; }
 }
-
-.tld-implant-glow { transform-box: fill-box; transform-origin: center; animation: tldGlow 3.2s ease-in-out infinite alternate; }
-@keyframes tldGlow {
+@keyframes tld2Glow {
   0%   { opacity: 0.22; transform: scale(1); }
   100% { opacity: 0.5; transform: scale(1.1); }
 }
+
+.tld-caption { text-align: center; font-size: 0.78rem; color: var(--ink-soft); font-style: italic; margin-top: 4px; }
 
 .tooth-loss-legend { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 28px; padding-top: 28px; border-top: 1px solid var(--line); }
 .tld-col h4 { font-size: 0.98rem; margin-bottom: 12px; }
@@ -1025,12 +1094,19 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 .tld-col:last-child li::before { content: "✓"; color: var(--gold); font-size: 0.8rem; }
 
 @media (max-width: 680px) {
-  .tooth-loss-diagram { padding: 32px 20px 28px; }
+  .tooth-loss-diagram { padding: 34px 22px 30px; }
+  .tld-ticks span { font-size: 0.62rem; }
   .tooth-loss-legend { grid-template-columns: 1fr; gap: 22px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tld-neighbor-left, .tld-neighbor-right, .tld-opposing, .tld-bone, .tld-time-badge, .tld-implant-glow {
+  .tld-fill,
+  .tld-ticks span,
+  .tld2-neighbor-left, .tld2-neighbor-right, .tld2-opposing, .tld2-bone,
+  .tld2-socket, .tld2-implant, .tld2-implant-glow {
     animation: none !important;
   }
+  .tld-fill { width: 100%; }
+  .tld2-implant { opacity: 1; }
+  .tld2-socket { opacity: 0; }
 }
