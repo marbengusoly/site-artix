@@ -251,7 +251,26 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   overflow: hidden;
 }
 .hero-media { position: absolute; inset: 0; z-index: 0; }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; }
+.hero-media-img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: heroCrossfade 16s ease-in-out infinite, heroKenBurns 16s linear infinite;
+}
+.hero-media-img.is-a { animation-delay: 0s, 0s; }
+.hero-media-img.is-b { animation-delay: -8s, -8s; }
+@keyframes heroCrossfade {
+  0%   { opacity: 0; }
+  4%   { opacity: 1; }
+  46%  { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes heroKenBurns {
+  0%   { transform: scale(1.04); }
+  100% { transform: scale(1.16); }
+}
 .hero-media::after {
   content: "";
   position: absolute; inset: 0;
@@ -309,7 +328,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
 @keyframes scrollcue { 0% { top: -100%; } 60% { top: 100%; } 100% { top: 100%; } }
 
 .hero-floating-badge {
-  position: absolute; z-index: 2; left: 40px; bottom: 40px;
+  position: absolute; z-index: 2; right: 40px; top: 130px;
   display: flex; align-items: center; gap: 14px;
   background: rgba(13,33,41,0.55);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -1109,4 +1128,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 1.5rem); }
   .tld-fill { width: 100%; }
   .tld2-implant { opacity: 1; }
   .tld2-socket { opacity: 0; }
+
+  .hero-media-img { animation: none !important; transform: none !important; opacity: 0; }
+  .hero-media-img.is-a { opacity: 1; }
 }
